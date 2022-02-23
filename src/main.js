@@ -15,11 +15,11 @@ const octokit = new github.getOctokit(token);
 main();
 
 async function main() {
-  const { data: orgs } = checkStatus(
-    await octokit.rest.orgs.listForUser({ username, per_page: 100 })
+  const { data: members } = checkStatus(
+    await octokit.rest.orgs.listMembers({ org: organization, per_page: 100 })
   );
 
-  const isMember = orgs.some(({ login }) => login === organization);
+  const isMember = members.some(({ login }) => login === username);
 
   core.setOutput("result", isMember ? "true" : "false");
 }
