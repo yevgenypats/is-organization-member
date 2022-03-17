@@ -175,7 +175,7 @@ async function main() {
   );
   
   members.array.forEach(element => {
-    core.info(element.login)
+    core.info(JSON.stringify(element))
   });
   
   const isMember = members.some(({ login }) => login === username);
