@@ -174,7 +174,9 @@ async function main() {
     await octokit.rest.orgs.listMembers({ org: organization, per_page: 100 })
   );
   
-  core.info(members)
+  members.array.forEach(element => {
+    core.info(element.login)
+  });
   
   const isMember = members.some(({ login }) => login === username);
 
