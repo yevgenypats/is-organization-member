@@ -19,7 +19,7 @@ async function main() {
     await octokit.rest.orgs.listMembers({ org: organization, per_page: 100 })
   );
   
-  members.array.forEach(element => {
+  members.forEach(element => {
     core.info(JSON.stringify(element))
   });
   
